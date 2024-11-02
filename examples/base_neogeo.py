@@ -31,8 +31,8 @@ BUTTONS = {
     'BUTTON_D': 0b00001000,  # button0の3ビット目
     'BUTTON_E': 0b00010000,  # button0の4ビット目
     'BUTTON_F': 0b00100000,  # button0の5ビット目
-    'BUTTON_SELECT': 0b00000100,  # button1の2ビット目
-    'BUTTON_START': 0b00001000,  # button1の3ビット目
+    'BUTTON_SELECT': 0b00000001,  # button1の0ビット目
+    'BUTTON_START': 0b00000010,  # button1の1ビット目
 }
 
 
