@@ -27,8 +27,10 @@ import sys
 BUTTONS = {
     'BUTTON_A': 0b00000001,  # button0の0ビット目
     'BUTTON_B': 0b00000010,  # button0の1ビット目
-    'BUTTON_C': 0b00001000,  # button0の3ビット目
-    'BUTTON_D': 0b00010000,  # button0の4ビット目
+    'BUTTON_C': 0b00000100,  # button0の2ビット目
+    'BUTTON_D': 0b00001000,  # button0の3ビット目
+    'BUTTON_E': 0b00010000,  # button0の4ビット目
+    'BUTTON_F': 0b00100000,  # button0の5ビット目
     'BUTTON_SELECT': 0b00000100,  # button1の2ビット目
     'BUTTON_START': 0b00001000,  # button1の3ビット目
 }
@@ -40,7 +42,7 @@ def gen_packet(button0, button1, axis_x, axis_y):
     header1 = 0xa5
     header2 = 0x5a
     
-    data = [header1, header2, button0, button1, 0, axis_y, axis_x, 0, 0, 0, 0, 0]
+    data = [header1, header2, button0, button1, axis_x, axis_y, 0, 0, 0, 0, 0, 0]
     return bytes(data)
 
 
@@ -59,7 +61,7 @@ def set_button_state(button_name, state, button0, button1):
     print(f"Invalid button name: {button_name}")
     return
 
-  if button_name in ['BUTTON_A', 'BUTTON_B', 'BUTTON_C', 'BUTTON_D']:  # button0
+  if button_name in ['BUTTON_A', 'BUTTON_B', 'BUTTON_C', 'BUTTON_D', 'BUTTON_E', 'BUTTON_F']:  # button0
     if state == "ON":
         button0 |= button
     else:

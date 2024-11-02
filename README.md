@@ -1,20 +1,5 @@
-![Test Image 1](top.jpg)
-# demogeoRemote_SerialCtrl
-### ネオジオミニに挿すだけでデモ機能を実現するUSBデバイス
-  
-### demogeoRemote（デモジオリモート）
-  
-### リモート機能でPythonからパッド操作も出来ます
-  
-[販売情報はこちらからご覧いただけます](https://amsss.hatenablog.com/entry/2024/10/07/184628).  
-  
-YouTubeショートにて商品紹介動画ご覧いただけます。
-[![YouTube](https://img.youtube.com/vi/PjePa-lNGQ0/0.jpg)](https://www.youtube.com/shorts/PjePa-lNGQ0).
+デモジオリモートのDirectInputリモートモードで JAMMA to USB 基板をレトロフリークで使えるようにするforkです。
+JAMMA to USB 基板はUSB複合デバイスとして認識されるため、市販の変換器では扱いづらい問題があります。
+特殊な利用ケースかもしれませんが、特殊であればあるほど、デモジオリモートは輝くと思います！
 
-   
----
-このリポジトリはdemogeoRemote（デモジオリモート）でリモート機能を利用するためのコードをまとめています。  
-FT232RLのドライバのインストールが必要です。 
-  
----
-[Twitterアカウントはこちらです](https://x.com/ukkari_6).  
+※ JAMMA to USB 基板はボタン6が押しっぱなしになる不具合があるため、ボタン割り当ての1つ目は捨てています。

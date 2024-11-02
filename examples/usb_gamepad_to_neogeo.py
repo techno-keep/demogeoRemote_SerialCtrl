@@ -37,16 +37,19 @@ def buttons_config():
   print(" ")
   print(" ")
   print("***********************************************************************************")
-  print("***  割り当てたいボタンを　A　B　C　D　E　START　SELECT　の順番で押してください ***")
+  print("***  割り当てたいボタンを　A　B　C　D　E　F　START　の順番で押してください ***")
   print("***********************************************************************************")
 
   # イベントループ
-  while len(buttons) < 6:
+  while len(buttons) < 8:
     for event in pygame.event.get():
       if event.type == pygame.JOYBUTTONDOWN:
         button_index = event.button  # 押されたボタンの番号
         print(f"ボタン {button_index} が押されました。")
         buttons.append(button_index)
+
+  # 先頭の削除
+  buttons.pop(0)
 
   return buttons
 
@@ -55,7 +58,7 @@ def buttons_config():
 
 if __name__ == "__main__":
     # シリアルポートの設定
-    serial_port = '/dev/ttyUSB0'  # 実行環境で変更する
+    serial_port = 'COM4'  # 実行環境で変更する
     baud_rate = 115200
 
     #デモジオに送るボタン変数 button0 = 0
@@ -74,7 +77,7 @@ if __name__ == "__main__":
       # 接続されているジョイスティックの数を取得
       joystick_count = pygame.joystick.get_count()
 
-      if joystick_count == 0:
+      if joystick_count < 2:
         print("ジョイスティックが見つかりません。")
         sys.exit()
 
@@ -88,7 +91,7 @@ if __name__ == "__main__":
       num_hats = joystick.get_numhats()
 
       # 割り当てるボタン名
-      button_names = ["BUTTON_A", "BUTTON_B", "BUTTON_C", "BUTTON_D", "BUTTON_START", "BUTTON_SELECT"]
+      button_names = ["BUTTON_A", "BUTTON_B", "BUTTON_C", "BUTTON_D", "BUTTON_E", "BUTTON_F", "BUTTON_START"]
 
       #ボタン割り当て設定
       buttons = buttons_config()
@@ -103,8 +106,8 @@ if __name__ == "__main__":
 
           #ジョイスティックの状態を更新
           if event.type == pygame.JOYAXISMOTION:
-            axis_x = int((joystick.get_axis(0) + 1.0 ) / 2.0 * 128)
-            axis_y = int((joystick.get_axis(1) + 1.0 ) / 2.0 * 128)
+            axis_x = int((joystick.get_axis(0) + 1.0 ) / 2.0 * 256)
+            axis_y = int((joystick.get_axis(1) + 1.0 ) / 2.0 * 256)
           #ジョイスティックの状態がハット操作に干渉するので削除
           #ハット操作をジョイスティック操作に反映させる
           #elif event.type == pygame.JOYHATMOTION:
